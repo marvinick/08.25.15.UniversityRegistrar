@@ -96,6 +96,23 @@
                 $this->assertEquals($id, $result);
             }
 
+            function testFind()
+            {
+                $student_name = "John Doe";
+                $enrollment_date = "2015-09-01";
+                $test_student = new Student($student_name, $enrollment_date);
+                $test_student->save();
+
+                $student_name2 = "Jane Smith";
+                $enrollment_date2 = "2013-09-01";
+                $test_student2 = new Student($student_name, $enrollment_date);
+                $test_student2->save();
+
+                $result = Student::find($test_student->getId());
+
+                $this->assertEquals($test_student, $result);
+            }
+
 
 
 
