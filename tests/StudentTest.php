@@ -145,6 +145,22 @@
                 $this->assertEquals([$test_student2], Student::getAll());
             }
 
+            function testAddCourse()
+            {
+                $student_name = "John Doe";
+                $enrollment_date = "2015-09-01";
+                $test_student = new Student($student_name, $enrollment_date);
+                $test_student->save();
+
+                $course_name = "History";
+                $course_code = "HIST100";
+                $test_course = new Course($course_name, $course_code);
+                $test_course->save();
+
+                $test_student->addCourse($test_course);
+
+                $this->assertEquals($test_student->getCourses(), [$test_course]);
+            }
 
         }
 ?>
