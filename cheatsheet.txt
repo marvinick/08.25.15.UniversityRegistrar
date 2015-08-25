@@ -1,0 +1,77 @@
+Git cheat sheet
+Basic Git workflow: Create a repository and make your first commit.
+
+Go to the top level of your project folder.
+cd ~/path/to/your/folder
+Now that you're inside your project folder, initialize a local repository.
+git init
+Configure user settings.
+When working with a pair, add each person individually, then add yourselves as a pair using your initials:
+
+git pair add mkn Michael Kaiser-Nyman
+git pair add yn Your Name
+git pair mkn yn
+When soloing:
+
+git config user.name "Your Name"
+git config user.email your@email.com
+Add all your files to the repository so that git knows to keep track of them.
+git add .
+Or add just a couple files:
+
+git add lib/kitten.rb spec/kitten_spec.rb
+Commit your changes.
+git commit -m "Add initial files."
+Create a remote repository on your github account. If you are pair programming, each person will have to do this separately so that the project is saved on both people's github accounts.
+On the github site, select the "Repositories" tab and then click the green "New" button.
+
+screenshot of button for creating a new repository
+
+Then copy the path that it gives you at the top.
+
+screenshot of path for a repository
+
+Add the remote repository so that your computer knows where to find each person's remote repository by using the git remote add command with the path you just copied from your github repository.
+The example below adds a remote repository at https://github.com/dianedouglas/test.git and names it "diane", and another one at https://github.com/keebz/test.git and names that one "lee".
+
+git remote add diane https://github.com/dianedouglas/test.git
+git remote add lee https://github.com/keebz/test.git
+If you are soloing, the standard name to use for a remote repository is "origin".
+
+git remote add origin https://github.com/dianedouglas/test.git
+Push your commit up to the remote repository to be stored on github using the git push command. Enter your github username and password if you are prompted to do so after this command.
+After the words git push use the name you picked for your remote repository in the previous step, followed by the word master. master is the name for your local repository.
+
+When pairing:
+
+git push diane master
+git push lee master
+Or when soloing:
+
+git push origin master
+That's your first commit on a new repository! Now you do some work. You write your first spec, then make it pass, then you do a little cleanup and refactoring as needed. This would be a good place to make your second commit. Think of it like a save point in a video game.
+
+Let's see how to continue making commits as we work:
+
+Add the changes you have made to your local repository on your computer using the same git add command as when you were setting up.
+git add .
+Commit them to the local repository. This is also the same command you used above during setup.
+git commit -m "Add first spec and make it pass."
+Push your new commit to the remote repository. This is the same as the last setup step and you should use the same remote name.
+When pairing:
+
+git push diane master
+git push lee master
+Or when soloing:
+
+git push origin master
+
+RUN SILEX
+export PATH=$PATH:./vendor/bin
+$ phpunit tests
+
+DATABASE
+mysql.server start
+mysql -uroot -proot
+
+apachectl start
