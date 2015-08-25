@@ -51,9 +51,14 @@
                 $this->setEnrollmentDate($new_enrollment_date);
             }
 
+            function delete()
+            {
+                $GLOBALS['DB']->exec("DELETE FROM students WHERE id = {$this->getId()}");
+            }
+
             static function getAll()
             {
-                $returned_students = $GLOBALS['DB']->query("SELECT * FROM students;");
+                $returned_students = $GLOBALS['DB']->query("SELECT * FROM students ORDER BY student_name;");
                 $students = array();
                 foreach($returned_students as $student) {
                     $student_name = $student['student_name'];

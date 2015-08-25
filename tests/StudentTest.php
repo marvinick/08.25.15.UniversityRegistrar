@@ -57,7 +57,7 @@
                 // var_dump($result);
 
                 //assert
-                $this->assertEquals([$test_student, $test_student2], $result);
+                $this->assertEquals([$test_student2, $test_student], $result);
             }
 
             function testGetStudentName()
@@ -129,7 +129,22 @@
                 $this->assertEquals($test_student, $new_student);
             }
 
+            function testDelete()
+            {
+                $student_name = "John Doe";
+                $enrollment_date = "2015-09-01";
+                $test_student = new Student($student_name, $enrollment_date);
+                $test_student->save();
 
+                $student_name2 = "Jane Smith";
+                $enrollment_date2 = "2013-09-01";
+                $test_student2 = new Student($student_name, $enrollment_date);
+                $test_student2->save();
+
+                $test_student->delete();
+
+                $this->assertEquals([$test_student2], Student::getAll());
+            }
 
 
         }
