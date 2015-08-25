@@ -47,7 +47,6 @@
             static function getAll()
             {
                 $returned_students = $GLOBALS['DB']->query("SELECT * FROM students;");
-                var_dump($returned_students);
                 $students = array();
                 foreach($returned_students as $student) {
                     $student_name = $student['student_name'];
@@ -57,6 +56,11 @@
                     array_push($students, $new_student);
                 }
                 return $students;
+            }
+
+            static function deleteAll()
+            {
+                $GLOBALS['DB']->exec("DELETE FROM students;");
             }
 
 
