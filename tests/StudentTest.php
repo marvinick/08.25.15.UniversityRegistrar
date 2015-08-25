@@ -36,7 +36,6 @@
                 $this->assertEquals($test_student, $result[0]);
             }
 
-
             function test_getAll()
             {
                 //arrange
