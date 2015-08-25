@@ -56,7 +56,34 @@
             $GLOBALS['DB']->exec("UPDATE courses SET course_name = '{$new_course_name}', course_code = '{$new_course_code}' WHERE id = {$this->getId()};");
             $this->setCourseName($new_course_name);
             $this->setCourseCode($new_course_code);
+        }
 
+
+        //NOT WORKING
+        function addStudent($student)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO student_enrollments (student_id, course_id) VALUES ({$student->getId()}, {$this->getId()};");
+        }
+
+        //NOT WORKING
+        function getStudents()
+        {
+            $returned_students = $GLOBALS['DB']->query("SELECT students.* FROM courses
+                            JOIN student_enrollments ON (courses.id = student_enrollments.course_id)
+                            JOIN students ON (student_enrollments.student_id = students.id)
+                            WHERE courses.id = {$this->getId()}
+                            ORDER BY student_name;");
+
+            $students = array();
+            foreach($returned_students as $student)
+            {
+                $student_name = $student['student_name'];
+                $enrollment_date = $student['enrollment_date'];
+                $id = $student['id'];
+                $new_student = new Student($student_name, $enrollment_date, $id);
+                array_push($students, $new_student);
+            }
+            return $students;
         }
 
         static function getAll()

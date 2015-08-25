@@ -18,6 +18,7 @@
         protected function tearDown()
         {
             Course::deleteAll();
+            Student::deleteAll();
         }
 
         function testGetCourseName()
@@ -136,7 +137,25 @@
             $test_course->update($new_course_name, $new_course_code);
 
             $this->assertEquals($test_course, $new_course);
+        }
 
+
+        //NOT PASSING - failing to assert two equal arrays
+        function testAddStudent()
+        {
+            $student_name = "John Doe";
+            $enrollment_date = "2015-09-01";
+            $test_student = new Student($student_name, $enrollment_date);
+            $test_student->save();
+
+            $course_name = "History";
+            $course_code = "HIST100";
+            $test_course = new Course($course_name, $course_code);
+            $test_course->save();
+
+            $test_course->addStudent($test_student);
+
+            $this->assertEquals($test_course->getStudents(), [$test_student]);
         }
     }
 

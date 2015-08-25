@@ -66,7 +66,8 @@
                 $returned_courses = $GLOBALS['DB']->query("SELECT courses.* FROM students
                             JOIN student_enrollments ON (students.id = student_enrollments.student_id)
                             JOIN courses ON (student_enrollments.course_id = courses.id)
-                            WHERE students.id = {$this->getId()}");
+                            WHERE students.id = {$this->getId()}
+                            ORDER BY course_name;");
 
                 $courses = array();
                 foreach($returned_courses as $course)
