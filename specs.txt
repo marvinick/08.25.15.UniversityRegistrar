@@ -1,0 +1,17 @@
+User inputs "John Doe" and "2015-09-01." Inputs are saved to the database "registrar" in two separate tables: "student_name" and "enrollment_date."
+
+User inputs "Jane Doe" and "2015-10-01." Inputs are saved to the database "registrar" in two separate tables: "student_name" and "enrollment_date."
+
+User inputs "Underwater Basketweaving" and "UND100." Inputs are saved to the database "registrar" in two separate tables: "course_name" and "course_id".
+
+User inputs "Jedi Mind Tricks" and "JMT100." Inputs are saved to the database "registrar" in two separate tables: "course_name" and "course_id".
+
+User inputs "John Doe" and selects "Underwater Basketweaving," this assignment is saved to the database "registrar" in a separate table: "class_enrollment".
+
+User inputs "John Doe" and selects "UND100," this assignment is saved to the database in a separate table: "class_enrollment".
+
+User inputs "John Doe" and selects "Jedi Mind Tricks." This class assignment is saved to the database in a separate table: "class_enrollment".
+
+User inputs "Jane Doe" and selects "Underwater Basketweaving," this assignment is saved to the database in a separate table: "class_enrollment".
+
+User inputs "Jane Doe" and selects "JMT100." This assignment is saved to the database in a separate table: "class_enrollment".
