@@ -113,6 +113,22 @@
                 $this->assertEquals($test_student, $result);
             }
 
+            function testUpdate()
+            {
+                $student_name = "John Doe";
+                $enrollment_date = "2015-09-01";
+                $test_student = new Student($student_name, $enrollment_date);
+                $test_student->save();
+
+                $new_student_name = "Jane Smith";
+                $new_enrollment_date = "2013-09-01";
+                $new_student = new Student($new_student_name, $new_enrollment_date, $test_student->getId());
+
+                $test_student->update($new_student_name, $new_enrollment_date);
+
+                $this->assertEquals($test_student, $new_student);
+            }
+
 
 
 

@@ -44,6 +44,13 @@
                 $this->id = $GLOBALS['DB']->lastInsertId();
             }
 
+            function update($new_student_name, $new_enrollment_date)
+            {
+                $GLOBALS['DB']->exec("UPDATE students SET student_name = '{$new_student_name}', enrollment_date = '{$new_enrollment_date}' WHERE id = {$this->getId()};");
+                $this->setStudentName($new_student_name);
+                $this->setEnrollmentDate($new_enrollment_date);
+            }
+
             static function getAll()
             {
                 $returned_students = $GLOBALS['DB']->query("SELECT * FROM students;");
